@@ -62,4 +62,11 @@ class Movie {
     overview         = json["overview"];
     releaseDate      = json["release_date"];
   }
+
+  String getPosterImage() {
+    if(posterPath == null) {
+      return "https://labs.sogeti.com/wp-content/themes/sogeti-labs/images/default-image.png";
+    }
+    return "https://image.tmdb.org/t/p/w500/$posterPath";
+  }
 }
