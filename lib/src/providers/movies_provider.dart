@@ -1,3 +1,4 @@
+import 'dart:async';
 import 'dart:convert';
 
 import 'package:flutter_movies/src/models/movie.dart';
@@ -8,7 +9,18 @@ class MoviesProvider {
   String _url = "api.themoviedb.org";
   String _language = "es-ES";
 
+  int _popularPage = 0;
+  List<Movie> _popular = new List();
+  final _popularStream = StreamController<List<Movie>>.broadcast();
 
+  // Agregar películas al Stream
+  Function(List<Movie>) get popularSink => _popularStream.sink.add;
+  // Escuchar películas del Stream
+  Stream<List<Movie>> get popularStream => _popularStream.stream;
+
+  void disposeStreams() {
+    _popularStream?.close();
+  }
 
   Future<List<Movie>> getNowPlaying() async {
     final url = Uri.https(_url, "3/movie/now_playing",{
@@ -18,11 +30,13 @@ class MoviesProvider {
     return await _excecuteRequest(url);
   }
 
-   Future<List<Movie>> getPopulars() async {
+   Future<List<Movie>> getPopular() async {
+     _popularPage++;
+
     final url = Uri.https(_url, "3/movie/popular",{
       'api_key': _apiKey,
       'language': _language,
-      'page': '1'
+      'page': _popularPage.toString()
     });
     return await _excecuteRequest(url);
   }
