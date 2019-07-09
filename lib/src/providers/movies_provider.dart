@@ -50,12 +50,16 @@ class MoviesProvider {
     return resp;
   }
 
-
   Future<List<Movie>> _excecuteRequest(Uri url) async {
     final resp = await http.get(url);
     final decodedData = json.decode(resp.body);
     final movies = Movies.fromJsonList(decodedData['results']);
     return movies.movies;
   }
+
+  getCast(String movieId ) {
+
+  }
+
 
 }
