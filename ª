@@ -1,0 +1,15 @@
+working with data streams and widgets
+
+# Please enter the commit message for your changes. Lines starting
+# with '#' will be ignored, and an empty message aborts the commit.
+#
+# On branch master
+# Your branch is ahead of 'origin/master' by 1 commit.
+#   (use "git push" to publish your local commits)
+#
+# Changes to be committed:
+#	modified:   ios/Runner.xcodeproj/project.pbxproj
+#	modified:   lib/src/pages/home_page.dart
+#	modified:   lib/src/providers/movies_provider.dart
+#	modified:   lib/src/widgets/movies_horizontal_page_view.dart
+#

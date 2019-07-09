@@ -69,4 +69,11 @@ class Movie {
     }
     return "https://image.tmdb.org/t/p/w500/$posterPath";
   }
+
+  String getBackgroundImage() {
+    if(posterPath == null) {
+      return "https://labs.sogeti.com/wp-content/themes/sogeti-labs/images/default-image.png";
+    }
+    return "https://image.tmdb.org/t/p/w500/$backdropPath";
+  }
 }
