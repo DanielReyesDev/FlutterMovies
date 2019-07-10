@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
 class Cast {
-  List<Actor> actors;
+  List<Actor> actors = List();
 
   Cast.fromJsonList(List<dynamic> jsonList) {
     if(jsonList == null) return;
