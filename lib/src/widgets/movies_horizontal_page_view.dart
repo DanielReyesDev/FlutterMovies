@@ -39,17 +39,21 @@ class MoviesHorizontalPageView extends StatelessWidget {
 
   Widget _buildCard(BuildContext context, Movie movie) {
 
+    movie.uniqueId = "${movie.id}-poster";
     final card = Container(
         margin: EdgeInsets.only(right: 15.0),
         child: Column(
           children: <Widget>[
-            ClipRRect(
-              borderRadius: BorderRadius.circular(20.0),
-              child: FadeInImage(
-                image: NetworkImage(movie.getPosterImage()),
-                placeholder: AssetImage("assets/img/no-image.jpg"),
-                fit: BoxFit.cover,
-                height: 160,
+            Hero(
+              tag: movie.uniqueId,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(20.0),
+                child: FadeInImage(
+                  image: NetworkImage(movie.getPosterImage()),
+                  placeholder: AssetImage("assets/img/no-image.jpg"),
+                  fit: BoxFit.cover,
+                  height: 160,
+                ),
               ),
             ),
             SizedBox(height: 5.0,),
